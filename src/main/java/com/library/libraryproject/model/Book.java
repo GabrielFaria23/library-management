@@ -1,13 +1,13 @@
 package com.library.libraryproject.model;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,17 +30,17 @@ public class Book {
     private String description;
 
     @NotNull
-    private Date publicationDate;
+    private LocalDate publication_date;
 
     @NotNull
     @Column(length = 100)
     private String author;
 
-    @OneToOne(mappedBy = "book")
-    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "hall_id")
     private Hall hall;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "shelf_id")
     private Shelf shelf;
 }

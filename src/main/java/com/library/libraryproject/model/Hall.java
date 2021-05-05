@@ -1,12 +1,13 @@
 package com.library.libraryproject.model;
 
-import com.sun.istack.NotNull;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @NoArgsConstructor
@@ -22,12 +23,22 @@ public class Hall {
     private long id;
 
     @NotNull
-    private String hallName;
+    @Column(length = 100)
+    private String hall_name;
+
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "library_id")
+    @NotNull
+    private Library library;
 
     @OneToMany(mappedBy = "hall")
+    @JsonIgnore
+    @NotNull
     private List<Book> books;
 
     @OneToMany(mappedBy = "hall")
+    @JsonIgnore
     @NotNull
     private List<Shelf> shelf;
 }
