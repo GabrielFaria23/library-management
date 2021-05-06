@@ -16,17 +16,16 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "library")
-public class Library {
+public class  Library {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotNull
-    @Column(length = 200)
-    private String library_name;
+    @Column(name = "library_name", length = 200)
+    private String libraryName;
 
-    @NotNull
     @OneToMany(mappedBy = "library")
     @JsonIgnore
     private List<Hall> halls;

@@ -23,15 +23,17 @@ public class Shelf {
     private long id;
 
     @NotNull
-    @Column(length = 100)
-    private String shelf_name;
+    @Column(name = "shelf_name", length = 100)
+    private String shelfName;
 
     @ManyToOne
     @JoinColumn(name = "hall_id")
-    @JsonIgnore
     private Hall hall;
 
     @OneToMany(mappedBy = "shelf")
     @JsonIgnore
     private List<Book> books;
+
+    @NotNull
+    private Integer quantity;
 }

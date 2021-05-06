@@ -30,7 +30,8 @@ public class Book {
     private String description;
 
     @NotNull
-    private LocalDate publication_date;
+    @Column(name = "publication_date")
+    private LocalDate publicationDate;
 
     @NotNull
     @Column(length = 100)
@@ -43,4 +44,13 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "shelf_id")
     private Shelf shelf;
+
+    @NotNull
+    private boolean available;
+
+    @NotNull
+    private Integer quantity;
+
+    @NotNull
+    private Float price;
 }

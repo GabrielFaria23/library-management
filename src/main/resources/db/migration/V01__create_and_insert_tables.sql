@@ -32,7 +32,7 @@ CREATE TABLE book(
 
 INSERT INTO library (library_name) values ("library 1");
 
-INSERT INTO hall (hall_name,library_id) values("hall 1", 1);
+INSERT INTO hall (hall_name,library_id) values("1", 1);
 
 INSERT INTO shelf (shelf_name, hall_id) values ("A", 1);
 

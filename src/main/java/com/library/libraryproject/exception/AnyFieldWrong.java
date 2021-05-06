@@ -3,10 +3,10 @@ package com.library.libraryproject.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class BookFieldWrong extends Throwable {
+@ResponseStatus(HttpStatus.BAD_REQUEST)
+public class AnyFieldWrong extends Exception {
 
-    public BookFieldWrong(String message) {
+    public AnyFieldWrong(String message) {
         super(message);
     }
 }

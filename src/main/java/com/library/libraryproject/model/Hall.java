@@ -23,22 +23,19 @@ public class Hall {
     private long id;
 
     @NotNull
-    @Column(length = 100)
-    private String hall_name;
+    @Column(name = "hall_name", length = 100)
+    private String hallName;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "library_id")
     @NotNull
     private Library library;
 
     @OneToMany(mappedBy = "hall")
     @JsonIgnore
-    @NotNull
     private List<Book> books;
 
     @OneToMany(mappedBy = "hall")
     @JsonIgnore
-    @NotNull
     private List<Shelf> shelf;
 }
