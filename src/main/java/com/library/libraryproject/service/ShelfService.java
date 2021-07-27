@@ -34,7 +34,6 @@ public class ShelfService {
 
         shelfUpdate.setBooks(shelf.getBooks());
         shelfUpdate.setShelfName(shelf.getShelfName());
-        shelfUpdate.setHall(shelf.getHall());
 
         return shelfRepository.save(shelfUpdate);
     }
@@ -50,7 +49,7 @@ public class ShelfService {
     }
 
     private Shelf checkShelfFields(Shelf shelf) throws AnyFieldWrong {
-        if( shelf.getHall() != null && shelf.getShelfName() != null ) {
+        if(shelf.getShelfName() != null ) {
             return shelf;
         }else{
             throw new AnyFieldWrong("The fields were not filled in correctly!");

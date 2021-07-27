@@ -26,14 +26,8 @@ public class Shelf {
     @Column(name = "shelf_name", length = 100)
     private String shelfName;
 
-    @ManyToOne
-    @JoinColumn(name = "hall_id")
-    private Hall hall;
-
-    @OneToMany(mappedBy = "shelf")
     @JsonIgnore
+    @OneToMany
     private List<Book> books;
 
-    @NotNull
-    private Integer quantity;
 }

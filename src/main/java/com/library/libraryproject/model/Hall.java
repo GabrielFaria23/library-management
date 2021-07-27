@@ -26,16 +26,11 @@ public class Hall {
     @Column(name = "hall_name", length = 100)
     private String hallName;
 
-    @ManyToOne
-    @JoinColumn(name = "library_id")
-    @NotNull
-    private Library library;
-
-    @OneToMany(mappedBy = "hall")
     @JsonIgnore
+    @OneToMany
+    private List<Shelf> shelfs;
+
+    @JsonIgnore
+    @OneToMany
     private List<Book> books;
-
-    @OneToMany(mappedBy = "hall")
-    @JsonIgnore
-    private List<Shelf> shelf;
 }

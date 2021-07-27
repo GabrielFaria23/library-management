@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -52,5 +53,17 @@ public class Book {
     private Integer quantity;
 
     @NotNull
-    private Float price;
+    @Column(name = "sale_price")
+    private Float salePrice;
+
+    @NotNull
+    private boolean rented;
+
+    @NotNull
+    @Column(name = "rent_price")
+    private Float rentPrice;
+
+    @NotNull
+    @Column(name = "date_deliver_book")
+    private LocalDateTime dateDeliverBook;
 }

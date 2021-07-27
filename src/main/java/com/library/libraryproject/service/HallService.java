@@ -34,8 +34,7 @@ public class HallService {
 
         hallUpdate.setBooks(hall.getBooks());
         hallUpdate.setHallName(hall.getHallName());
-        hallUpdate.setLibrary(hall.getLibrary());
-        hallUpdate.setShelf(hall.getShelf());
+        hallUpdate.setShelfs(hall.getShelfs());
 
         return hallRepository.save(hallUpdate);
     }
@@ -51,7 +50,7 @@ public class HallService {
     }
 
     private Hall checkHallFields(Hall hall) throws AnyFieldWrong {
-        if(hall.getHallName() != null && hall.getLibrary() != null ) {
+        if(hall.getHallName() != null ) {
             return hall;
         }else{
             throw new AnyFieldWrong("The fields were not filled in correctly!");

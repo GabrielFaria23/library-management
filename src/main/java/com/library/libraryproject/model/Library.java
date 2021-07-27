@@ -26,7 +26,7 @@ public class  Library {
     @Column(name = "library_name", length = 200)
     private String libraryName;
 
-    @OneToMany(mappedBy = "library")
+    @OneToMany
     @JsonIgnore
     private List<Hall> halls;
 }

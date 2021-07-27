@@ -5,16 +5,13 @@ CREATE TABLE library(
 
 CREATE TABLE hall(
     id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
-    hall_name VARCHAR(100) NOT NULL,
-    library_id BIGINT(20) NOT NULL,
-    FOREIGN KEY (library_id) REFERENCES library(id)
+    hall_name VARCHAR(100) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE shelf(
     id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
     shelf_name VARCHAR(100) NOT NULL,
-    hall_id BIGINT(20) NOT NULL,
-    FOREIGN KEY (hall_id) REFERENCES hall(id)
+    quantity_books BIGINT(20)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE book(
@@ -25,6 +22,12 @@ CREATE TABLE book(
     author VARCHAR(100) NOT NULL,
     hall_id BIGINT(20) NOT NULL,
     shelf_id BIGINT(20) NOT NULL,
+    available BOOLEAN NOT NULL,
+    quantity BIGINT(20) NOT NULL,
+    sale_price FLOAT NOT NULL,
+    rented BOOLEAN NOT NULL,
+    rent_price FLOAT NOT NULL,
+    date_deliver_book DATE NOT NULL,
     FOREIGN KEY (hall_id) REFERENCES hall(id),
     FOREIGN KEY (shelf_id) REFERENCES shelf(id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -32,8 +35,10 @@ CREATE TABLE book(
 
 INSERT INTO library (library_name) values ("library 1");
 
-INSERT INTO hall (hall_name,library_id) values("1", 1);
+INSERT INTO hall (hall_name) values("1");
 
-INSERT INTO shelf (shelf_name, hall_id) values ("A", 1);
+INSERT INTO shelf (shelf_name,quantity_books) values ("A",50);
 
-INSERT INTO book (title, description, publication_date, author, hall_id, shelf_id) values("JavaEE", "book about programing with java and some frameworks like spring boot", '2010-11-10', "richard", 1, 1);
+INSERT INTO book (title, description, publication_date, author, hall_id, shelf_id, available, quantity, sale_price,
+                  rented, rent_price, date_deliver_book) values("JavaEE", "book about programing with java and some
+                    frameworks like spring boot", '2010-11-10', "richard", 1, 1, True, 5, 10.0, False, 2.0, '2021-02-20');
